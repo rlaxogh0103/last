@@ -7,10 +7,34 @@
 #define CACTUS_BOTTOM_X 45
 
 void CursorView(char show);
+void SetColor(unsigned short text);
 void SetConsoleView();
 void DrawDino();
 void GotoXY(int x, int y);
 void DrawCactus(int cactusX);
+
+enum {
+	BLACK,
+	DARK_BLUE,
+	DARK_GREEN,
+	DARK_SKYBLUE,
+	DARK_RED,
+	DARK_VIOLET,
+	DARK_YELLOW,
+	GRAY,
+	DARK_GRAY,
+	BLUE,
+	GREEN,
+	SKYBLUE,
+	RED,
+	VIOLET,
+	YELLOW,
+	WHITE,
+};
+
+void SetColor(unsigned short text) {
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), text);
+}
 
 int main() {
 	SetConsoleView();
