@@ -13,6 +13,7 @@ void DrawDino(int dinoY);
 void GotoXY(int x, int y);
 void DrawCactus(int cactusX);
 int IsCollision(const int cactusX, const int dinoY);
+int GetKeyDown();
 
 enum {
 	BLACK,
@@ -56,7 +57,7 @@ int main() {
 }
 
 void DrawCactus(int cactusX) {
-	SetColor(GREEN);
+	SetColor(VIOLET);
 	GotoXY(cactusX, CACTUS_BOTTOM_Y);
 	printf("  $");
 	GotoXY(cactusX, CACTUS_BOTTOM_Y + 1);
