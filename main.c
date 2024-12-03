@@ -1,7 +1,12 @@
 #include<stdio.h>
 #include<stdbool.h>
+#include<windows.h>
+
+void CursorView(char show);
+void SetConsoleView();
 
 int main() {
+	SetConsoleView();
 	while (true) {
 		static int legFlag = true;
 		printf("        $$$$$$$ \n");		// 8, 7, 1
@@ -19,9 +24,6 @@ int main() {
 		printf("$    \n");							// 1, 4
 		printf("    $$$$$$$$    \n");		// 4, 8, 4
 		printf("     $$$$$$     \n");		// 5, 6, 5
-		printf("     $    $$$   \n");		// 5, 1, 4, 3, 3
-		printf("     $$         ");			// 5, 2, 9
-
 		if (legFlag) {
 			printf("     $    $$$   \n");
 			printf("     $$         ");
@@ -36,4 +38,17 @@ int main() {
 		Sleep(60);
 		system("cls");
 	}
+}
+
+void CursorView(char show) {
+	CONSOLE_CURSOR_INFO ConsoleCursor;
+	ConsoleCursor.bVisible = show;
+	ConsoleCursor.dwSize = 1;
+	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &ConsoleCursor);
+}
+
+void SetConsoleView() {
+	system("mode con:cols=120 lines=30");
+	system("title 창의실무프로젝트 구글 공룡 게임 [By. Taeho Kim]");
+	CursorView(false);
 }
