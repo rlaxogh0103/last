@@ -47,6 +47,11 @@ int main() {
 
 		int dinoY = DINO_BOTTOM_Y;
 		int cactusX = CACTUS_BOTTOM_X;
+
+		int score = 0;
+		clock_t start, curr;
+		start = clock();
+
 		while (true) {
 			if (IsCollision(cactusX, dinoY)) break;
 			cactusX -= 2;
@@ -72,8 +77,19 @@ int main() {
 
 			DrawDino(dinoY);
 			DrawCactus(cactusX);
+
+			curr = clock();
+			if (((curr - start) / CLOCKS_PER_SEC) >= 1) {
+				score++;
+				start = clock();
+			}
+
 			Sleep(60);
 			system("cls");
+
+			SetColor(WHITE);
+			GotoXY(22, 0); printf("Score : %d ", score);
+			GotoXY(20, 2); printf("มกวม : Speace Key");
 		}
 	}
 }
