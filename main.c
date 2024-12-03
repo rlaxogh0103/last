@@ -41,11 +41,15 @@ int main() {
 	while (true) {
 		int dinoY = DINO_BOTTOM_Y;
 		int cactusX = CACTUS_BOTTOM_X;
-		DrawDino(dinoY);
-		DrawCactus(cactusX);
+		while (true) {
+			cactus -= 2;
+			if (cactusX <= 0) cactusX = CACTUS_BOTTOM_X;
 
-		Sleep(60);
-		system("cls");
+			DrawDino(dinoY);
+			DrawCactus(cactusX);
+			Sleep(60);
+			system("cls");
+		}
 	}
 }
 
