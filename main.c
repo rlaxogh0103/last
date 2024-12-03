@@ -50,6 +50,7 @@ int main() {
 }
 
 void DrawCactus(int cactusX) {
+	SetColor(GREEN);
 	GotoXY(cactusX, CACTUS_BOTTOM_Y);
 	printf("  $");
 	GotoXY(cactusX, CACTUS_BOTTOM_Y + 1);
@@ -70,6 +71,7 @@ void GotoXY(int x, int y) {
 }
 
 void DrawDino(int dinoY) {
+	SetColor(SKYBLUE);
 	GotoXY(0, dinoY);
 	static int legFlag = true;
 	printf("        $$$$$$$ \n");		// 8, 7, 1
@@ -80,10 +82,12 @@ void DrawDino(int dinoY) {
 	printf("$$$   $$$$$     \n");		// 3, 3, 5, 5
 	printf(" $$  $$$$$$$$$$ \n");		// 1, 2, 2, 10, 1
 	printf(" $$");									// 1, 2
-	printf("원광대");
+	SetColor(RED); printf("원광대");
+	SetColor(SKYBLUE);
 	printf("$$$    \n");						// 3, 4
 	printf("  $$$");								// 2, 3
-	printf("컴소공");
+	SetColor(BLUE); printf("컴소공");
+	SetColor(SKYBLUE);
 	printf("$    \n");							// 1, 4
 	printf("    $$$$$$$$    \n");		// 4, 8, 4
 	printf("     $$$$$$     \n");		// 5, 6, 5
