@@ -3,6 +3,8 @@
 #include<windows.h>
 
 #define DINO_BOTTOM_Y 17
+#define CACTUS_BOTTOM_Y 25
+#define CACTUS_BOTTOM_X 45
 
 void CursorView(char show);
 void SetConsoleView();
