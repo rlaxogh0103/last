@@ -10,16 +10,32 @@ void CursorView(char show);
 void SetConsoleView();
 void DrawDino();
 void GotoXY(int x, int y);
+void DrawCactus(int cactusX);
 
 int main() {
 	SetConsoleView();
 	while (true) {
 		int dinoY = DINO_BOTTOM_Y;
+		int cactusX = CACTUS_BOTTOM_X;
 		DrawDino(dinoY);
+		DrawCactus(cactusX);
 
 		Sleep(60);
 		system("cls");
 	}
+}
+
+void DrawCactus(int cactusX) {
+	GotoXY(cactusX, CACTUS_BOTTOM_Y);
+	printf("  $");
+	GotoXY(cactusX, CACTUS_BOTTOM_Y + 1);
+	printf("$ $  ");
+	GotoXY(cactusX, CACTUS_BOTTOM_Y + 2);
+	printf("$ $ $");
+	GotoXY(cactusX, CACTUS_BOTTOM_Y + 3);
+	printf("$$$$$");
+	GotoXY(cactusX, CACTUS_BOTTOM_Y + 4);
+	printf("  $  ");
 }
 
 void GotoXY(int x, int y) {
