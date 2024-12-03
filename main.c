@@ -91,6 +91,7 @@ int main() {
 			GotoXY(22, 0); printf("Score : %d ", score);
 			GotoXY(20, 2); printf("มกวม : Speace Key");
 		}
+		DrawGameOver(score);
 	}
 }
 
@@ -171,4 +172,21 @@ int IsCollision(const int cactusX, const int dinoY) {
 	printf("cactusX : %2d,dinoY : %2d", cactusX, dinoY);
 	if (cactusX <= 8 && cactusX >= 2 && dinoY > 12) return true;
 	return false;
+}
+
+void DrawGameOver(const int score) {
+	system("cls"); SetColor(YELLOW);
+	int x = 22, y = 8;
+	GotoXY(x, y);
+
+	printf("====================================");
+	GotoXY(x, y + 1);
+	printf("==========G A M E O V E R===========");
+	GotoXY(x, y + 2);
+	printf("====================================");
+	GotoXY(x, y + 5);
+	printf("SCORE : %d", score);
+
+	printf("\n\n\n\n\n\n\n\n\n");
+	system("pause");
 }
