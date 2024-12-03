@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdbool.h>
 #include<windows.h>
+#include<time.h>
 
 #define DINO_BOTTOM_Y 17
 #define CACTUS_BOTTOM_Y 25
