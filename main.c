@@ -40,10 +40,32 @@ void SetColor(unsigned short text) {
 int main() {
 	SetConsoleView();
 	while (true) {
+		int isJumping = false;
+		int isBottom = true;
+		const int gravity = 3;
+
 		int dinoY = DINO_BOTTOM_Y;
 		int cactusX = CACTUS_BOTTOM_X;
 		while (true) {
 			if (IsCollision(cactusX, dinoY)) break;
+			cactusX -= 2;
+			if (cactusX <= 0) cactusX = CACTUS_BOTTOM_X;
+
+			if (GetKeyDown() == ' ' && isBottom) {
+				isJumping = true;
+				isBottom = false;
+			}
+
+			if (isJumping) dinoY -= gravity;
+			else dinoY += gravity;
+
+			if (dinoY >= DINO_BOTTOM_Y) {
+				dinoY = DINO_BOTTOM_Y;
+				isBottom = true;
+			}
+
+			if (dinoY <= 3) isJumping = false;
+
 			cactusX -= 2;
 			if (cactusX <= 0) cactusX = CACTUS_BOTTOM_X;
 
@@ -53,6 +75,11 @@ int main() {
 			system("cls");
 		}
 	}
+}
+
+int GetKeyDown() {
+	if (_kbhit() != 0)return _getch();
+	return false;
 }
 
 void DrawCactus(int cactusX) {
