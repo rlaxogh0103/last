@@ -71,7 +71,7 @@ void GotoXY(int x, int y) {
 }
 
 void DrawDino(int dinoY) {
-	SetColor(SKYBLUE);
+	SetColor(YELLOW);
 	GotoXY(0, dinoY);
 	static int legFlag = true;
 	printf("        $$$$$$$ \n");		// 8, 7, 1
@@ -83,11 +83,11 @@ void DrawDino(int dinoY) {
 	printf(" $$  $$$$$$$$$$ \n");		// 1, 2, 2, 10, 1
 	printf(" $$");									// 1, 2
 	SetColor(RED); printf("원광대");
-	SetColor(SKYBLUE);
+	SetColor(YELLOW);
 	printf("$$$    \n");						// 3, 4
 	printf("  $$$");								// 2, 3
 	SetColor(BLUE); printf("컴소공");
-	SetColor(SKYBLUE);
+	SetColor(YELLOW);
 	printf("$    \n");							// 1, 4
 	printf("    $$$$$$$$    \n");		// 4, 8, 4
 	printf("     $$$$$$     \n");		// 5, 6, 5
