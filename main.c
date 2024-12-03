@@ -9,9 +9,10 @@
 void CursorView(char show);
 void SetColor(unsigned short text);
 void SetConsoleView();
-void DrawDino();
+void DrawDino(int dinoY);
 void GotoXY(int x, int y);
 void DrawCactus(int cactusX);
+int IsCollision(const int cactusX, const int dinoY);
 
 enum {
 	BLACK,
@@ -42,7 +43,8 @@ int main() {
 		int dinoY = DINO_BOTTOM_Y;
 		int cactusX = CACTUS_BOTTOM_X;
 		while (true) {
-			cactus -= 2;
+			if (IsCollision(cactusX, dinoY)) break;
+			cactusX -= 2;
 			if (cactusX <= 0) cactusX = CACTUS_BOTTOM_X;
 
 			DrawDino(dinoY);
@@ -118,4 +120,11 @@ void SetConsoleView() {
 	system("mode con:cols=120 lines=30");
 	system("title 창의실무프로젝트 구글 공룡 게임 [By. Taeho Kim]");
 	CursorView(false);
+}
+
+int IsCollision(const int cactusX, const int dinoY) {
+	GotoXY(0, 0);
+	printf("cactusX : %2d,dinoY : %2d", cactusX, dinoY);
+	if (cactusX <= 8 && cactusX >= 2 && dinoY > 12) return true;
+	return false;
 }
