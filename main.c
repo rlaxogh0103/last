@@ -7,6 +7,9 @@
 #define CACTUS_BOTTOM_Y 25
 #define CACTUS_BOTTOM_X 45
 
+void ClearDino(int dinoY);
+void ClearCactus(int cactusX);
+
 void CursorView(char show);
 void SetColor(unsigned short text);
 void SetConsoleView();
@@ -14,6 +17,8 @@ void DrawDino(int dinoY);
 void GotoXY(int x, int y);
 void DrawCactus(int cactusX);
 int IsCollision(const int cactusX, const int dinoY);
+int GetKeyDown();
+void DrawGameOver(const int score);
 
 enum {
 	BLACK,
@@ -85,7 +90,8 @@ int main() {
 			}
 
 			Sleep(60);
-			system("cls");
+			ClearDino(dinoY);
+			ClearCactus(cactusX);
 
 			SetColor(WHITE);
 			GotoXY(22, 0); printf("Score : %d ", score);
@@ -171,4 +177,35 @@ int IsCollision(const int cactusX, const int dinoY) {
 	printf("cactusX : %2d,dinoY : %2d", cactusX, dinoY);
 	if (cactusX <= 8 && cactusX >= 2 && dinoY > 12) return true;
 	return false;
+}
+
+void ClearDino(int dinoY) {
+	GotoXY(0, dinoY);
+	for (int i = 0; i < 12; i++) printf("                \n");
+	printf("                ");
+}
+
+void ClearCactus(int cactusX) {
+	for (int i = 0; i < 5; i++) {
+		GotoXY(cactusX, CACTUS_BOTTOM_Y + i);
+		printf("     ");
+	}
+}
+
+void DrawGameOver(const int score) {
+	system("cls"); SetColor(YELLOW);
+	int x = 22, y = 8;
+	GotoXY(x, y);
+
+	printf("====================================");
+	GotoXY(x, y + 1);
+	printf("==========G A M E O V E R===========");
+	GotoXY(x, y + 2);
+	printf("====================================");
+	GotoXY(x, y + 5);
+	printf("SCORE : %d", score);
+
+	printf("\n\n\n\n\n\n\n\n\n");
+	system("pause");
+	system("cls");
 }
